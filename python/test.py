@@ -1,8 +1,20 @@
 import unittest
 
-from functions import generate_random_list, multiply, even_odd, string_concat, element_in_list, factorial, count_evens
+from functions import (generate_random_list,
+                       multiply,
+                       even_odd,
+                       string_concat,
+                       element_in_list,
+                       factorial,
+                       count_evens,
+                       swap_elements,
+                       swap,
+                       add_matrices,
+                       run_matrices,
+                       )
 
-LIST_LENGTH = 10000
+LIST_LENGTH = 1_0_000_000
+#LIST_LENGTH = 1_000
 
 class TestGenerateRandomList(unittest.TestCase):
     def test_length(self):
@@ -144,6 +156,37 @@ class TestCountEvensFunction(unittest.TestCase):
         """Test with an empty list."""
         list = generate_random_list(LIST_LENGTH)
         self.assertTrue(count_evens(list) > 0)
+
+class TestSwapFunctions(unittest.TestCase):
+
+    def test_swap(self):
+        test_list = [1, 2, 3, 4]
+        swapped_list = swap(test_list, 1, 2)
+        self.assertEqual(swapped_list, [1, 3, 2, 4])
+
+    def test_swap_boundaries(self):
+        test_list = [1, 2, 3, 4]
+        swapped_list = swap(test_list, 0, 3)
+        self.assertEqual(swapped_list, [4, 2, 3, 1])
+
+    def test_swap_elements(self):
+        swapped_list = swap_elements(LIST_LENGTH)
+        self.assertEqual(len(swapped_list), LIST_LENGTH)
+
+
+class TestMatrixFunctions(unittest.TestCase):
+
+    def test_add_matrices(self):
+        matrix1 = [[1, 2], [3, 4]]
+        matrix2 = [[5, 6], [7, 8]]
+        expected_result = [[6, 8], [10, 12]]
+        self.assertEqual(add_matrices(matrix1, matrix2), expected_result)
+
+    def test_run_matrices(self):
+        result_matrix = run_matrices(LIST_LENGTH)
+        self.assertEqual(len(result_matrix), 2)
+        self.assertEqual(len(result_matrix[0]), LIST_LENGTH)
+        self.assertEqual(len(result_matrix[1]), LIST_LENGTH)
 
 
 # Run the tests

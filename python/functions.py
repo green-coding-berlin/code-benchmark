@@ -1,7 +1,5 @@
 import random
 
-LIST_LENGTH = 100000
-
 def generate_random_list(length):
     random_list = []
     for _ in range(length):
@@ -40,25 +38,46 @@ def string_concat(length):
     return s
 
 def element_in_list(length):
-    
+
     if length <= 2:
         return False
-    
+
     my_list = generate_random_list(length)
     my_list[length-2] = 101
     if 101 in my_list:
         return True
     return False
 
-##
 def factorial(n):
     return 1 if n == 0 else n * factorial(n - 1)
 
-##
 def count_evens(numbers):
     return len([num for num in numbers if num % 2 == 0])
 
-##
-data = {"a": 1, "b": 2, "c": 3}
-for key in data:
-    data[key] = data[key] * 2
+def swap(my_list, index1, index2):
+    temp = my_list[index1]
+    my_list[index1] = my_list[index2]
+    my_list[index2] = temp
+    return my_list
+
+def swap_elements(length):
+    my_list = generate_random_list(length)
+    for i in range(length - 2):
+        swap(my_list,i ,i + 1)
+    return my_list
+
+def add_matrices(matrix1, matrix2):
+    result = []
+    for i in range(len(matrix1)):
+        row = []
+        for j in range(len(matrix1[0])):
+            row.append(matrix1[i][j] + matrix2[i][j])
+        result.append(row)
+    return result
+
+def run_matrices(length):
+    a = generate_random_list(length)
+    b = generate_random_list(length)
+    c = generate_random_list(length)
+    d = generate_random_list(length)
+    return add_matrices([a,b], [b,c])

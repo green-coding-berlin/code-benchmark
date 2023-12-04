@@ -1,0 +1,17 @@
+---
+name: Benchmark script
+author: Didi Hoffmann
+description: Runs the benchmark for optimization purposes
+
+services:
+  gcb-python:
+    image: python
+    cmd: sh
+
+flow:
+  - name: Running the tests
+    container: gcb-python
+    commands:
+      - type: console
+        command: python3 /tmp/repo/python/test.py
+        note: Python tests
