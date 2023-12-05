@@ -5,7 +5,7 @@ description: Runs the benchmark for optimization purposes
 
 services:
   gcb-python:
-    image: python
+    image: python:3.9.18
     cmd: sh
 
 flow:
