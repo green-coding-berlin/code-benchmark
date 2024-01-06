@@ -1,9 +1,11 @@
 import random
+MIN = -100
+MAX = 100
 
 def generate_random_list(length):
     random_list = []
     for _ in range(length):
-        number = random.randint(-100, 100)
+        number = random.randint(MIN, MAX)
         random_list.append(number)
     return random_list
 
@@ -81,3 +83,14 @@ def run_matrices(length):
     c = generate_random_list(length)
     d = generate_random_list(length)
     return add_matrices([a,b], [b,c])
+
+def list_for_find(length):
+    randome_elements = random.sample(range(MIN, MAX), 100)
+    list_seq = list(generate_random_list(length))
+
+    counter = 0
+    for ele in randome_elements:
+        if ele in list_seq:
+            counter += 1
+
+    return counter

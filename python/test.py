@@ -11,10 +11,11 @@ from functions import (generate_random_list,
                        swap,
                        add_matrices,
                        run_matrices,
+                       list_for_find
                        )
 
-LIST_LENGTH = 1_0_000_000
-#LIST_LENGTH = 1_000
+#LIST_LENGTH = 1_0_000_000
+LIST_LENGTH = 1_00_000
 
 class TestGenerateRandomList(unittest.TestCase):
     def test_length(self):
@@ -188,6 +189,11 @@ class TestMatrixFunctions(unittest.TestCase):
         self.assertEqual(len(result_matrix[0]), LIST_LENGTH)
         self.assertEqual(len(result_matrix[1]), LIST_LENGTH)
 
+class TestListSet(unittest.TestCase):
+
+    def test_run(self):
+        result = list_for_find(LIST_LENGTH)
+        self.assertTrue(result > 0)
 
 # Run the tests
 if __name__ == '__main__':
